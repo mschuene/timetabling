@@ -1,0 +1,152 @@
+
+;; [[file:~/programming/timetabling/timetabling.org::*Ergebnisse][Ergebnisse:1]]
+
+(def bigger-example-room-schedule-entities
+  (merge (select-keys bigger-example-entities
+                      [:classes :teachers :buildings :distances
+                       :num-days :hours-per-day])
+         {:events
+          {:class-1-math
+           (create-event :classes :class-1  :teachers #{:teacher-1} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]}) ;;hier auf 30 ändern
+           :class-2-math
+           (create-event :classes :class-2  :teachers #{:teacher-2} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-3-math
+           (create-event :classes :class-3  :teachers #{:teacher-3} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]}) ;;hier auf 30 ändern
+           :class-4-math
+           (create-event :classes :class-4  :teachers #{:teacher-4} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-5-math
+           (create-event :classes :class-5  :teachers #{:teacher-5} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]}) ;;hier auf 30 ändern
+           :class-6-math
+           (create-event :classes :class-6  :teachers #{:teacher-6} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]}):class-7-math
+           (create-event :classes :class-7  :teachers #{:teacher-7} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]}) ;;hier auf 30 ändern
+           :class-8-math
+           (create-event :classes :class-8  :teachers #{:teacher-8} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-9-math
+           (create-event :classes :class-9  :teachers #{:teacher-9} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]}) ;;hier auf 30 ändern
+           :class-10-math
+           (create-event :classes :class-10  :teachers #{:teacher-10} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]}):class-11-math
+           (create-event :classes :class-11  :teachers #{:teacher-11} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]}) ;;hier auf 30 ändern
+           :class-12-math
+           (create-event :classes :class-12  :teachers #{:teacher-12} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-1-sk 
+           (create-event :classes :class-1  :teachers #{:teacher-1} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-2-sk
+           (create-event :classes :class-2  :teachers #{:teacher-2} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-3-sk 
+           (create-event :classes :class-3  :teachers #{:teacher-3} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-4-sk
+           (create-event :classes :class-4  :teachers #{:teacher-4} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-5-sk
+           (create-event :classes :class-5  :teachers #{:teacher-5} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]} )
+           :class-6-sk
+           (create-event :classes :class-6  :teachers #{:teacher-6} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-7-sk 
+           (create-event :classes :class-7  :teachers #{:teacher-7} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-8-sk
+           (create-event :classes :class-8  :teachers #{:teacher-8} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-9-sk 
+           (create-event :classes :class-9  :teachers #{:teacher-9} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-10-sk
+           (create-event :classes :class-10  :teachers #{:teacher-10} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-11-sk 
+           (create-event :classes :class-11  :teachers #{:teacher-11} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-12-sk
+           (create-event :classes :class-12  :teachers #{:teacher-12} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})
+           :class-1-german
+           (create-event :classes :class-1  :teachers #{:teacher-1} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-2-german
+           (create-event :classes :class-2  :teachers #{:teacher-2} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-3-german
+           (create-event :classes :class-3  :teachers #{:teacher-3} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-4-german
+           (create-event :classes :class-4  :teachers #{:teacher-4} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-5-german
+           (create-event :classes :class-5  :teachers #{:teacher-5} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-6-german
+           (create-event :classes :class-6  :teachers #{:teacher-6} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-7-german
+           (create-event :classes :class-7  :teachers #{:teacher-7} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-8-german
+           (create-event :classes :class-8  :teachers #{:teacher-8} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-9-german
+           (create-event :classes :class-9  :teachers #{:teacher-9} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-10-german
+           (create-event :classes :class-10  :teachers #{:teacher-10} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-11-german
+           (create-event :classes :class-11  :teachers #{:teacher-11} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-12-german
+           (create-event :classes :class-12  :teachers #{:teacher-12} :number-of-times 4 :forbidden-rooms #{[:building-2 :werkraum] [:building-1 :art-room] [:sporthalle :sporthalle]})         
+           :class-1-sport
+           (create-event :classes :class-1 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1 )         
+           :class-2-sport
+           (create-event :classes :class-2 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-3-sport
+           (create-event :classes :class-3 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-4-sport
+           (create-event :classes :class-4 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-5-sport
+           (create-event :classes :class-5 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-6-sport
+           (create-event :classes :class-6 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-7-sport
+           (create-event :classes :class-7 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-8-sport
+           (create-event :classes :class-8 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-9-sport
+           (create-event :classes :class-9 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-10-sport
+           (create-event :classes :class-10 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-11-sport
+           (create-event :classes :class-11 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-12-sport
+           (create-event :classes :class-12 :rooms #{[:sporthalle :sporthalle]} :teachers #{:sportlehrer} :durations [2] :number-of-times 1)         
+           :class-1-art
+           (create-event :classes :class-1 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-1} :number-of-times 2)         
+           :class-2-art
+           (create-event :classes :class-2 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-2} :number-of-times 2)         
+           :class-3-art
+           (create-event :classes :class-3 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-3} :number-of-times 2)         
+           :class-4-art
+           (create-event :classes :class-4 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-4} :number-of-times 2)         
+           :class-5-art
+           (create-event :classes :class-5 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-5} :number-of-times 2)         
+           :class-6-art
+           (create-event :classes :class-6 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-6} :number-of-times 2)         
+           :class-7-art
+           (create-event :classes :class-7 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-7} :number-of-times 2)         
+           :class-8-art
+           (create-event :classes :class-8 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-8} :number-of-times 2)         
+           :class-9-art
+           (create-event :classes :class-9 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-9} :number-of-times 2)         
+           :class-10-art
+           (create-event :classes :class-10 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-10} :number-of-times 2)         
+           :class-11-art
+           (create-event :classes :class-11 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-11} :number-of-times 2)         
+           :class-12-art
+           (create-event :classes :class-12 :rooms #{[:building-1 :art-room]} :teachers #{:teacher-12} :number-of-times 2)         
+           :class-1-werken
+           (create-event :classes :class-1 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-1} :number-of-times 2)        
+           :class-2-werken
+           (create-event :classes :class-2 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-2} :number-of-times 2)         
+           :class-3-werken
+           (create-event :classes :class-3 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-3} :number-of-times 2)        
+           :class-4-werken
+           (create-event :classes :class-4 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-4} :number-of-times 2)         
+           :class-5-werken
+           (create-event :classes :class-5 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-5} :number-of-times 2)        
+           :class-6-werken
+           (create-event :classes :class-6 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-6} :number-of-times 2)         
+           :class-7-werken
+           (create-event :classes :class-7 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-7} :number-of-times 2)        
+           :class-8-werken
+           (create-event :classes :class-8 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-8} :number-of-times 2)         
+           :class-9-werken
+           (create-event :classes :class-9 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-9} :number-of-times 2)        
+           :class-10-werken
+           (create-event :classes :class-10 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-10} :number-of-times 2)         
+           :class-11-werken
+           (create-event :classes :class-11 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-11} :number-of-times 2)        
+           :class-12-werken
+           (create-event :classes :class-12 :rooms #{[:building-2 :werkraum]} :teachers #{:teacher-12} :number-of-times 2)}}))
+
+;; Ergebnisse:1 ends here
